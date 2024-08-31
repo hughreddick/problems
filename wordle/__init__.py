@@ -93,6 +93,12 @@ def partial_match_exact_and_close():
     for word in ["agent", "burst", "canoe"]:
         check50.c.run(f"./wordle_test check_word arise {word}").stdout(3)
 
+
+@check50.check(compiles)
+def partial_match_repeat_letter():
+    """wordle recognizes guess with a repeat letter"""
+    for word in ["joust", "pines", "links"]:
+        check50.c.run(f"./wordle_test check_word grass {word}").stdout(3)
         
 @check50.check(compiles)
 def partial_multiple_matches():
@@ -104,5 +110,5 @@ def partial_multiple_matches():
 @check50.check(compiles)
 def exact_match():
     """wordle recognizes correct guess"""
-    for word in ["gnome", "sized", "world"]:
+    for word in ["gnome", "sized", "world", "grill"]:
         check50.c.run(f"./wordle_test check_word {word} {word}").stdout(10)
